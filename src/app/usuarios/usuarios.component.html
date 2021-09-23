@@ -1,0 +1,28 @@
+<form [formGroup]="miFormulario" (ngSubmit)="datos()">
+  <input
+    type="text"
+    id="nombre"
+    name="nombre"
+    formControlName="nombre"
+    [class.val]="
+      miFormulario.controls['nombre'].touched &&
+      miFormulario.controls['nombre'].invalid
+    "
+  />
+  <span
+    *ngIf="
+      !miFormulario.controls['nombre'].valid &&
+      miFormulario.controls['nombre'].touched
+    "
+    >Porfavor llenar el campo de texto nombre
+  </span>
+  <br />
+  <br />
+  <input type="text" id="apellido" name="apellido" formControlName="apellido" />
+  <br />
+  <br />
+  <br />
+  <br />
+  <button type="submit">enviar</button>
+</form>
+<p>Contenido : {{ miFormulario.valid | json }}</p>
